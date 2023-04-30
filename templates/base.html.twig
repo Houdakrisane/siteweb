@@ -9,7 +9,7 @@
             <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
             <meta content="Themesbrand" name="author" />
             <!-- App favicon -->
-            <link rel="shortcut icon" href="assets/images/favicon.ico">
+            <link rel="shortcut icon" href="admin/images/favicon.ico">
 
             <!-- jsvectormap css -->
             <link href="{{asset('admin/libs/jsvectormap/css/jsvectormap.min.css')}}" rel="stylesheet" type="text/css" />
@@ -74,19 +74,19 @@
                         <div class="navbar-brand-box horizontal-logo">
                             <a href="index.html" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                            <img src="{{asset('admin/images/logo.png')}}" alt="" height="22">
                         </span>
                                 <span class="logo-lg">
-                            <img src="assets/images/logo-dark.png" alt="" height="17">
+                            <img src="{{asset('admin/images/logo.png')}}" alt="" height="17">
                         </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                            <img src="{{asset('admin/images/logo.png')}}" alt="" height="22">
                         </span>
                                 <span class="logo-lg">
-                            <img src="assets/images/logo-light.png" alt="" height="17">
+                            <img src="{{asset('admin/images/logo.png')}}" alt="" height="17">
                         </span>
                             </a>
                         </div>
@@ -101,10 +101,7 @@
 
                         <!-- App Search-->
                     </div>
-                    <div>
-                        <button class="btn btn-primary btn-sm ">Connexion</button>
-                        <button class="btn btn-danger btn-sm ">Deconnexion</button>
-                    </div>
+
 
                     <div class="d-flex align-items-center">
 
@@ -194,7 +191,7 @@
 
                                             <div class="text-reset notification-item d-block dropdown-item position-relative">
                                                 <div class="d-flex">
-                                                    <img src="assets/images/users/avatar-2.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                    <img src="admin/images/users/avatar-2.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                                     <div class="flex-1">
                                                         <a href="#!" class="stretched-link">
                                                             <h6 class="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier</h6>
@@ -243,7 +240,7 @@
 
                                             <div class="text-reset notification-item d-block dropdown-item position-relative">
                                                 <div class="d-flex">
-                                                    <img src="assets/images/users/avatar-8.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                    <img src="admin/images/users/avatar-8.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                                     <div class="flex-1">
                                                         <a href="#!" class="stretched-link">
                                                             <h6 class="mt-0 mb-1 fs-13 fw-semibold">Maureen Gibson</h6>
@@ -276,7 +273,7 @@
                                         <div data-simplebar style="max-height: 300px;" class="pe-2">
                                             <div class="text-reset notification-item d-block dropdown-item">
                                                 <div class="d-flex">
-                                                    <img src="assets/images/users/avatar-3.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                    <img src="admin/images/users/avatar-3.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                                     <div class="flex-1">
                                                         <a href="#!" class="stretched-link">
                                                             <h6 class="mt-0 mb-1 fs-13 fw-semibold">James Lemire</h6>
@@ -299,7 +296,7 @@
 
                                             <div class="text-reset notification-item d-block dropdown-item">
                                                 <div class="d-flex">
-                                                    <img src="assets/images/users/avatar-2.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                    <img src="admin/images/users/avatar-2.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                                     <div class="flex-1">
                                                         <a href="#!" class="stretched-link">
                                                             <h6 class="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier</h6>
@@ -323,7 +320,7 @@
 
                                             <div class="text-reset notification-item d-block dropdown-item">
                                                 <div class="d-flex">
-                                                    <img src="assets/images/users/avatar-6.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                    <img src="admin/images/users/avatar-6.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                                     <div class="flex-1">
                                                         <a href="#!" class="stretched-link">
                                                             <h6 class="mt-0 mb-1 fs-13 fw-semibold">Kenneth Brown</h6>
@@ -347,7 +344,7 @@
 
                                             <div class="text-reset notification-item d-block dropdown-item">
                                                 <div class="d-flex">
-                                                    <img src="assets/images/users/avatar-8.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                    <img src="admin/images/users/avatar-8.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                                     <div class="flex-1">
                                                         <a href="#!" class="stretched-link">
                                                             <h6 class="mt-0 mb-1 fs-13 fw-semibold">Maureen Gibson</h6>
@@ -384,7 +381,10 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div>
+                            <button class="btn btn-primary btn-sm ">Connexion</button>
+                            <button class="btn btn-danger btn-sm ">Deconnexion</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -397,19 +397,19 @@
                 <!-- Dark Logo-->
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <img src="admin/images/logo-sm.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-dark.png" alt="" height="17">
+                        <img src="admin/images/logo-dark.png" alt="" height="17">
                     </span>
                 </a>
                 <!-- Light Logo-->
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <img src="admin/images/logo-sm.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-light.png" alt="" height="17">
+                        <img src="admin/images/logo-light.png" alt="" height="17">
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -1051,26 +1051,26 @@
                                 <div class="form-check sidebar-setting card-radio">
                                     <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-01" value="img-1">
                                     <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-01">
-                                        <img src="assets/images/sidebar/img-1.jpg" alt="" class="avatar-md w-auto object-cover">
+                                        <img src="admin/images/sidebar/img-1.jpg" alt="" class="avatar-md w-auto object-cover">
                                     </label>
                                 </div>
 
                                 <div class="form-check sidebar-setting card-radio">
                                     <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-02" value="img-2">
                                     <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-02">
-                                        <img src="assets/images/sidebar/img-2.jpg" alt="" class="avatar-md w-auto object-cover">
+                                        <img src="admin/images/sidebar/img-2.jpg" alt="" class="avatar-md w-auto object-cover">
                                     </label>
                                 </div>
                                 <div class="form-check sidebar-setting card-radio">
                                     <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-03" value="img-3">
                                     <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-03">
-                                        <img src="assets/images/sidebar/img-3.jpg" alt="" class="avatar-md w-auto object-cover">
+                                        <img src="admin/images/sidebar/img-3.jpg" alt="" class="avatar-md w-auto object-cover">
                                     </label>
                                 </div>
                                 <div class="form-check sidebar-setting card-radio">
                                     <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-04" value="img-4">
                                     <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-04">
-                                        <img src="assets/images/sidebar/img-4.jpg" alt="" class="avatar-md w-auto object-cover">
+                                        <img src="admin/images/sidebar/img-4.jpg" alt="" class="avatar-md w-auto object-cover">
                                     </label>
                                 </div>
                             </div>

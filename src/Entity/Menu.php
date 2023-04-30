@@ -14,7 +14,7 @@ class Menu
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $titer = null;
+    private ?string $title = null;
 
     #[ORM\Column(length: 150)]
     private ?string $info = null;
@@ -30,14 +30,14 @@ class Menu
         return $this->id;
     }
 
-    public function getTiter(): ?string
+    public function getTitle(): ?string
     {
-        return $this->titer;
+        return $this->title;
     }
 
-    public function setTiter(string $titer): self
+    public function setTitle(string $title): self
     {
-        $this->titer = $titer;
+        $this->title = $title;
 
         return $this;
     }

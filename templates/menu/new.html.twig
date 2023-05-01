@@ -1,11 +1,9 @@
-{% extends 'templaite.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}New Menu{% endblock %}
 
 {% block body %}
-    <h1>Create new Menu</h1>
+    <h1 class="text-center">Crée un nouveau</h1>
 
     {{ include('menu/_form.html.twig') }}
-
-    <a href="{{ path('app_menu_index') }}">back to list ...</a>
 {% endblock %}

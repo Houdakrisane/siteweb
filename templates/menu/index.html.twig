@@ -3,13 +3,17 @@
 {% block title %}Menu index{% endblock %}
 
 {% block body %}
-    <h1>Menu index</h1>
-
-    <table class="table">
-        <thead>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title mb-0 text-center">Menu</h3>
+    </div>
+    <div class="card-body">
+    <div class="">
+        <table class="table nowrap align-middle table-" style="width:100%">
+            <thead>
             <tr>
                 <th>Id</th>
-                <th>Titer</th>
+                <th>title</th>
                 <th>Info</th>
                 <th>Prix</th>
                 <th>Image</th>
@@ -20,10 +24,15 @@
         {% for menu in menus %}
             <tr>
                 <td>{{ menu.id }}</td>
-                <td>{{ menu.titer }}</td>
+                <td>{{ menu.title }}</td>
                 <td>{{ menu.info }}</td>
                 <td>{{ menu.prix }}</td>
-                <td>{{ menu.image }}</td>
+                <td>{% if menu.imageFile %}
+                        <img src="{{  vich_uploader_asset(menu, 'imageFile') }}" alt="{{ menu.title }}">
+                    {% else %}
+                        <p>No image available.</p>
+                    {% endif %}
+                </td>
                 <td>
                     <a href="{{ path('app_menu_show', {'id': menu.id}) }}">show</a>
                     <a href="{{ path('app_menu_edit', {'id': menu.id}) }}">edit</a>
@@ -36,6 +45,11 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_menu_new') }}">Create new</a>
+    </div>
+</div>
+    <div class="" style="bottom: 100px;position: fixed;right: 20px;z-index: 1000;">
+        <a id="" href="{{ path('app_menu_new') }}" class="CustomerContracts-New btn btn-light bg-white waves-effect waves-light border-primary btn-rounded shadow-lg btn btn-icon btn-lg p-2" >
+            <i class="mdi mdi-spin  mdi-plus-circle text-primary fs-36"></i>
+        </a>
+    </div>
 {% endblock %}

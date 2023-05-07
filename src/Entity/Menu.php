@@ -25,11 +25,12 @@ class Menu
     #[ORM\Column]
     private ?float $prix = null;
 
-    #[ORM\Column(length: 150)]
-    private ?string $image = null;
-
-    #[Vich\UploadableField(mapping: 'menu_image', fileNameProperty: 'image')]
+    #[Vich\UploadableField(mapping: 'menu', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
+
 
     public function getId(): ?int
     {
@@ -84,26 +85,21 @@ class Menu
     {
         $this->imageFile = $imageFile;
 
-        if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
-        }
     }
 
     public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
-    public function getImage(): ?string
+
+    public function setImageName(?string $imageName): void
     {
-        return $this->image;
+        $this->imageName = $imageName;
     }
 
-    public function setImage(string $image): self
+    public function getImageName(): ?string
     {
-        $this->image = $image;
-
-        return $this;
+        return $this->imageName;
     }
+
 }

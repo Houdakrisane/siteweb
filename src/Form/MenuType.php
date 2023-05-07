@@ -20,9 +20,7 @@ class MenuType extends AbstractType
             ->add('imageFile', VichFileType::class, [
                 'required' => false,
                 'allow_delete' => true,
-                'delete_label' => '...',
-                'download_uri' => '...',
-                'download_label' => '...',
+                'delete_label' => "suprimer l'ancienne image",
                 'asset_helper' => true,
             ])
         ;        ;

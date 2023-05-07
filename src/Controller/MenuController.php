@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Menu;
 use App\Form\MenuType;
 use App\Repository\MenuRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,22 +50,26 @@ class MenuController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_menu_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Menu $menu, MenuRepository $menuRepository): Response
+    public function edit(EntityManagerInterface $entityManager, Request $request, int $id): Response
     {
+        $menu = $entityManager->getRepository(Menu::class)->find($id);
+
         $form = $this->createForm(MenuType::class, $menu);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $menuRepository->save($menu, true);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('app_menu_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_menu_index', ['id' => $menu->getId()]);
         }
 
-        return $this->renderForm('menu/edit.html.twig', [
-            'menu' => $menu,
-            'form' => $form,
+        return $this->render('menu/edit.html.twig', [
+            'form' => $form->createView(),
+            'menu' => $menu
         ]);
     }
+
 
     #[Route('/{id}', name: 'app_menu_delete', methods: ['POST'])]
     public function delete(Request $request, Menu $menu, MenuRepository $menuRepository): Response

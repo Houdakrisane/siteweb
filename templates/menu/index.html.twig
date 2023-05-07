@@ -7,9 +7,9 @@
     <div class="card-header">
         <h3 class="card-title mb-0 text-center">Menu</h3>
     </div>
-    <div class="card-body">
+    <div class="card-body table-datatable">
     <div class="">
-        <table class="table nowrap align-middle table-" style="width:100%">
+        <table id="myTable" class="table nowrap align-middle table-datatable" style="width:100%">
             <thead>
             <tr>
                 <th>Id</th>
@@ -27,11 +27,9 @@
                 <td>{{ menu.title }}</td>
                 <td>{{ menu.info }}</td>
                 <td>{{ menu.prix }}</td>
-                <td>{% if menu.imageFile %}
-                        <img src="{{  vich_uploader_asset(menu, 'imageFile') }}" alt="{{ menu.title }}">
-                    {% else %}
-                        <p>No image available.</p>
-                    {% endif %}
+                <td>
+                        <img width="50" height="50" src="{{  vich_uploader_asset(menu, 'imageFile') }}" alt="{{ menu.title }}">
+
                 </td>
                 <td>
                     <a href="{{ path('app_menu_show', {'id': menu.id}) }}">show</a>
@@ -53,3 +51,6 @@
         </a>
     </div>
 {% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('datatable') }}
+    {% endblock %}

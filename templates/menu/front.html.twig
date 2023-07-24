@@ -37,9 +37,10 @@
 
                         <!-- DROPDOWN MENU -->
                         <li><a href="{{ path('app_front') }}" class="home">Home</a>
-                        <li><a href="{{ path('app_admin') }}" class="home">Admin</a>
-
-                        </li>
+                            {# Check if the user is authenticated and has the "admin" role #}
+                            {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('app_admin') }}" class="home">Admin</a></li>
+                        {% endif %}
 
                         <!-- DROPDOWN MENU -->
                         <li><a href="#" class="menu">Nos Menu</a>

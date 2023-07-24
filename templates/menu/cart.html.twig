@@ -18,8 +18,8 @@
 
 
                 <!-- LOGO IMAGE -->
-                <div class="logo" data-mobile-logo="{{asset('images/logo-01.png')}}" data-sticky-logo="images/logo-01.png')}}">
-                    <a href="{{asset('assets/#hero-4')}}"><img src="{{asset('assets/images/logo-01.png')}}" alt="header-logo"/></a>
+                <div class="logo" data-mobile-logo="{{asset('assets/images/logo-01.png')}}" data-sticky-logo="{{asset('assets/images/logo-01.png')}}">
+                    <a href="#"><img src="{{asset('assets/images/logo-01.png')}}" alt="header-logo"/></a>
                 </div>
 
 
@@ -67,10 +67,10 @@
 
 
 
+
     <!-- PAGE CONTENT
     ============================================= -->
     <div id="page" class="page">
-
 
         <div id="cart-page" class="page-hero-section division">
             <div class="container">
@@ -128,7 +128,7 @@
                                 <tbody>
                                 {% for item in cart %}
                                     <!-- CART ITEM #{{ loop.index }} -->
-                                    <tr>
+                                    <tr class="item">
                                         <td data-label="Product" class="product-name">
                                             <!-- Preview -->
                                             <div class="cart-product-img"><img src="{{ vich_uploader_asset(item.menu, 'imageFile') }}" alt="cart-preview"></div>
@@ -156,29 +156,82 @@
                     </div>
                 </div>
                 <!-- CART CHECKOUT -->
-                <div class="row">
+                {% if cart|length > 0 %}
+                <div class="row justify-content-center" >
 
                     <!-- DISCOUNT COUPON -->
-                    <div class="col-lg-8">
-                        <div class="discount-coupon row pt-15">
+            <!-- Ajouter ce script JS à votre template ou le charger dans un fichier séparé -->
 
-                            {{ form_start(form) }}
-                            {{ form_widget(form) }}
-                            <button class="btn">{{ button_label|default('Save') }}</button>
-                            {{ form_end(form) }}
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
+
+
+                        <div class="col-8">
                         <div class="cart-checkout bg-lightgrey">
+                            <div class="alert alert-success" role="alert" style="display: none" id="confirmationDialog" title="Order Confirmation">
+                                Votre commandes a bien été envoyer
+                            </div>
+                            <div id="send">
                             <h5 class="h5-lg">Cart Total</h5>
                             <!-- Add a span with the id "cart-total" to display the cart total -->
                             <h5 id="cart-total" class="h6-lg">{{ total|number_format(2, '.', '') }}</h5>
-                            <a href="#" class="btn btn-md btn-salmon tra-salmon-hover">Commander</a>
+                            <a href="#" class="btn btn-md btn-salmon tra-salmon-hover" id="commande">Commander</a>
+                            </div>
                         </div>
-                    </div>
+                        </div>
 
-                </div>	  <!-- END CART CHECKOUT -->
+                </div>
+                {% endif%}
+                <!-- END CART CHECKOUT -->
                 <!-- Add this JavaScript code block to your template or include it in a separate JS file -->
+                <script>
+                    $(document).ready(function() {
+                        function updateCartItemCount() {
+                            $.ajax({
+                                url: '/get-cart-item-count', // Replace this with the URL of your controller action to get the cart item count
+                                type: 'GET',
+                                dataType: 'json',
+                                success: function(data) {
+                                    // Update the cart item count in the DOM
+                                    $('#cartItemCount').text(data.itemCount);
+                                },
+                                error: function(error) {
+                                    console.error('Error:', error);
+                                }
+                            });
+                        }
+
+                        // Soumettre le formulaire de commande via AJAX
+                        $('#commande').click(function(event) {
+                            event.preventDefault();
+
+                            // Récupérer les données du formulaire
+                            const formData = $(this).serialize();
+
+                            // Envoyer les données de l'entité Order au serveur via une requête AJAX
+                            $.ajax({
+                                url: '/save-order',
+                                type: 'POST',
+                                data: formData,
+                                dataType: 'json',
+                                success: function(response) {
+                                    if (response.success) {
+                                        // Succès : afficher un message de succès ou rediriger l'utilisateur, etc.
+                                        updateCartItemCount()
+                                        $('.item').closest('tr').remove();
+                                        $('#send').remove();
+                                        $('#confirmationDialog').show();
+                                    } else {
+                                        // Échec : afficher un message d'erreur ou traiter les erreurs retournées par le serveur
+                                        alert('Failed to submit order. Please check the form and try again.');
+                                    }
+                                },
+                                error: function(error) {
+                                    // Afficher un message d'erreur en cas d'erreur AJAX
+                                    alert('An error occurred while submitting the order. Please try again later.');
+                                }
+                            });
+                        });
+                    });
+                </script>
                 <script>
                     $(document).ready(function() {
                         // Add to cart

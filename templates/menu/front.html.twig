@@ -18,8 +18,8 @@
 
 
                 <!-- LOGO IMAGE -->
-                <div class="logo" data-mobile-logo="{{asset('images/logo-01.png')}}" data-sticky-logo="images/logo-01.png')}}">
-                    <a href="{{asset('assets/#hero-4')}}"><img src="{{asset('assets/images/logo-01.png')}}" alt="header-logo"/></a>
+                <div class="logo" data-mobile-logo="{{asset('assets/images/logo-01.png')}}" data-sticky-logo="{{asset('assets/images/logo-01.png')}}">
+                    <a href="#"><img src="{{asset('assets/images/logo-01.png')}}" alt="header-logo"/></a>
                 </div>
 
 
@@ -37,6 +37,7 @@
 
                         <!-- DROPDOWN MENU -->
                         <li><a href="{{ path('app_front') }}" class="home">Home</a>
+                        <li><a href="{{ path('app_admin') }}" class="home">Admin</a>
 
                         </li>
 
@@ -58,17 +59,19 @@
                         <li><a href="#" class="contact">Contacts</a>
                             {% if app.user %}
                         <li><a href="{{ path('app_logout') }}" class="contact text-error">Déconnexion</a></li>
-                        {% else %}
-                            <li><a href="{{ path('app_login') }}" class="contact">Connexion</a></li>
-                            <li><a href="{{ path('app_register') }}" class="contact">Inscription</a></li>
-                        {% endif %}
-
-
                         <li class="basket-ico ico-30">
                             <a href="{{ path('app_front_cart') }}">
                                 <span class="ico-holder"><span class="flaticon-shopping-bag"></span> <em class="roundpoint" id="cartItemCount">{{ cart|length }}</em></span>
                             </a>
                         </li>
+                        {% else %}
+                            <li><a href="{{ path('app_login') }}" class="contact">Connexion</a></li>
+                            <li><a href="{{ path('app_register') }}" class="contact">Inscription</a></li>
+
+                        {% endif %}
+
+
+
 
                     </ul>
                 </nav>
@@ -79,7 +82,37 @@
 
         </div>
     </header>	<!-- END HEADER-3 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function scrollToSection(sectionId) {
+                var element = document.querySelector(sectionId);
+                if (element) {
+                    var topOffset = element.getBoundingClientRect().top + window.pageYOffset;
+                    window.scroll({ top: topOffset, behavior: 'smooth' });
+                }
+            }
+            // Replace the class names in the following event listeners
+            document.querySelector('.menu').addEventListener('click', function(e) {
+                e.preventDefault();
+                scrollToSection('#menu');
+            });
+            // Replace the class names in the following event listeners
+            document.querySelector('.contact').addEventListener('click', function(e) {
+                e.preventDefault();
+                scrollToSection('#contact');
+            });
 
+            document.querySelector('.evenement').addEventListener('click', function(e) {
+                e.preventDefault();
+                scrollToSection('#evenement');
+            });
+
+            document.querySelector('.galery').addEventListener('click', function(e) {
+                e.preventDefault();
+                scrollToSection('#galery');
+            });
+        });
+    </script>
 
 
 
